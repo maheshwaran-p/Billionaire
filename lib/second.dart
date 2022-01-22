@@ -1,5 +1,8 @@
 import 'package:billionaire/invite.dart';
+import 'package:billionaire/xscreens/login/bloc/login_bloc.dart';
+import 'package:billionaire/xscreens/login/ui/sign-up.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Second extends StatelessWidget {
   @override
@@ -32,17 +35,23 @@ class Second extends StatelessWidget {
           ),
           Stack(
             children: [
-              Container(
-                // color: Colors.white,
-                height: 40,
-                width: MediaQuery.of(context).size.width * 1.0,
-                child: Text(
-                  "Dayanandh N",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 23,
-                  ),
-                ),
+              BlocBuilder<LoginBloc, LoginState>(
+                builder: (context, state) {
+                  if (state is UserCreatedState)
+                    return Container(
+                      // color: Colors.white,
+                      height: 40,
+                      width: MediaQuery.of(context).size.width * 1.0,
+                      child: Text(
+                        "${state.username}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 23,
+                        ),
+                      ),
+                    );
+                  return Container();
+                },
               ),
               Padding(padding: EdgeInsets.only(right: 20, left: 20)),
               Align(
@@ -154,7 +163,7 @@ class Second extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Invite()));
+                      MaterialPageRoute(builder: (context) => OTPView()));
                 },
                 child: Container(
                   padding: EdgeInsets.all(6.5),

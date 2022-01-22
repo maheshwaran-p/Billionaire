@@ -1,8 +1,14 @@
 import 'package:billionaire/chatbot.dart';
+import 'package:billionaire/xscreens/login/ui/sign-up.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class First extends StatelessWidget {
+class First extends StatefulWidget {
+  @override
+  _FirstState createState() => _FirstState();
+}
+
+class _FirstState extends State<First> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +35,7 @@ class First extends StatelessWidget {
         child: Text("Help"),
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Chatbot()));
+              context, MaterialPageRoute(builder: (context) => OTPView()));
         },
       ),
     );

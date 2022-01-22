@@ -1,13 +1,35 @@
+import 'package:billionaire/app/locator.dart';
 import 'package:billionaire/first.dart';
 import 'package:billionaire/second.dart';
-import 'package:billionaire/third.dart';
+import 'package:billionaire/xscreens/login/bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(MyApp());
+  setupLocator();
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(create: (context) => LoginBloc()),
+  ], child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,11 +57,11 @@ class MyApp extends StatelessWidget {
                 child: ListView(
                   children: <Widget>[
                     ListTile(
-                      title: Text("Ttem 1"),
+                      title: Text("Dash Board"),
                       trailing: Icon(Icons.arrow_forward),
                     ),
                     ListTile(
-                      title: Text("Item 2"),
+                      title: Text("Leader Board"),
                       trailing: Icon(Icons.arrow_forward),
                     ),
                   ],
